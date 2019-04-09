@@ -4,7 +4,7 @@
 	<select id="getViewInfosByCondition" resultType="map"
 		parameterType="map">
 		select *,(select count(id) from picture where
-		picture.viewId=view.id)
+		picture.viewId=view.id and picture.type='1')
 		as pictureNum,(select count(id) from comment
 		where
 		COMMENT.viewId=view.id) as commentNum from view

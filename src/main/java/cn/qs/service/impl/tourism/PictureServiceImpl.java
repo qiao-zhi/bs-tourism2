@@ -26,6 +26,7 @@ public class PictureServiceImpl implements PictureService {
 		PictureExample example = new PictureExample();
 		Criteria createCriteria = example.createCriteria();
 		createCriteria.andViewidEqualTo(viewId);
+		createCriteria.andTypeEqualTo("1");
 		return pictureMapper.selectByExample(example);
 	}
 
