@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="UTF-8"/>
+    <title>景点列表</title>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" th:href="${#httpServletRequest.getContextPath()+'/static/x-admin/css/font.css'}"/>
+    <link rel="stylesheet" th:href="${#httpServletRequest.getContextPath()+'/static/x-admin/css/xadmin.css'}"/>
+    <!-- <link rel="stylesheet" th:href="${#httpServletRequest.getContextPath()+'/static/x-admin/lib/layui/css/layui.css'}"/> -->
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" th:src="${#httpServletRequest.getContextPath()+'/static/x-admin/lib/layui/layui.js'}" charset="utf-8"></script>
+  </head>
+  
+  <body>
+      <!-- 顶部开始 -->
+    <div class="container">
+        <div class="logo"><a href="./index.html">上海旅游网(景点列表)</a></div>
+        <div class="left_open">
+        </div>
+        <ul class="layui-nav right" lay-filter="">
+          <li class="layui-nav-item">
+            <a href="javascript:;">admin</a>
+            <dl class="layui-nav-child"> <!-- 二级菜单 -->
+              <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
+            </dl>
+          </li>
+        </ul>
+    </div>
+    
+    <div class="x-body layui-anim layui-anim-up">
+		<div class="layui-anim layui-anim-loop">XXX</div>
+    </div>
+    
+     <!-- 底部开始 -->
+    <div class="footer">
+        <div class="copyright">Copyright ©2019 qs All Rights Reserved</div>  
+    </div>
+    <!-- 底部结束 -->
+  </body>
+</html>

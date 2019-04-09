@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.qs.mapper.tourism.custom.ViewCustomMapper">
+	<select id="getViewInfosByCondition" resultType="map"
+		parameterType="map">
+		select *,(select count(id) from picture where
+		picture.viewId=view.id)
+		as pictureNum,(select count(id) from comment
+		where
+		COMMENT.viewId=view.id) as commentNum from view
+		<where>
+			<if test="viewName != null">
+				and viewname like '%${viewName}%'
+			</if>
+			<if test="viewType != null">
+				and type like '%${viewType}%'
+			</if>
+		</where>
+	</select>
+</mapper>

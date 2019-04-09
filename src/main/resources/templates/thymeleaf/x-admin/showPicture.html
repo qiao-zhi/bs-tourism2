@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="UTF-8"/>
+    <title>欢迎页面-X-admin2.0</title>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/static/x-admin/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" th:href="${#httpServletRequest.getContextPath()+'/static/x-admin/css/font.css'}"/>
+    <link rel="stylesheet" th:href="${#httpServletRequest.getContextPath()+'/static/x-admin/css/xadmin.css'}"/>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" th:src="${#httpServletRequest.getContextPath()+'/static/x-admin/lib/layui/layui.all.js'}" charset="utf-8"></script>
+    <script type="text/javascript" th:src="${#httpServletRequest.getContextPath()+'/static/x-admin/js/xadmin.js'}"></script>
+    
+    <!--自己写的JS  -->
+    <script type="text/javascript" th:src="${#httpServletRequest.getContextPath()+'/static/x-admin/MyJs/PublicFunctions.js'}"></script>
+    <script type="text/javascript" th:src="${#httpServletRequest.getContextPath()+'/static/x-admin/MyJs/view_list.js'}"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body class="layui-anim layui-anim-up">
+     <div class="x-body">
+		<input type="hidden" id="hidden_picture_index"/>
+		<input type="hidden" id="hidden_tmp_index"/>
+        <div class="layui-upload">
+	        <button type="button" class="layui-btn" id="structurePicture">上传图片</button>
+	        <input type="hidden" th:field="${view.id}" id="viewId"/>
+	        <!--预留一个预览的img标签-->
+	        <div id="imgDiv" style="display: none;margin-top: 10px;">
+	            <img id="imgPreview" width="400px" height="200px"/>
+	        </div>
+	    </div>
+    </div>
+  </body>
+</html>
+<script>
+layui.use(['upload','layer'],function () {
+    var upload = layui.upload,layer = layui.layer;
+    //普通图片上传
+    var uploadInst = upload.render({
+        elem: '#structurePicture',//绑定的元素
+        url: '/picture/uploadPicture.html',//提交的url
+        auto:true,//是否自动上传
+        accept:"images",//指定允许上传的文件类型
+        multiple:false,//支持多文件上传
+        acceptMime:"image/*",//规定打开文件选择框时，筛选出的文件类型
+        before: function(obj){
+            this.data={"viewId": $("#viewId").val()}//携带额外的数据
+            //预读本地文件示例，不支持ie8
+            obj.preview(function(index, file, result){
+                $('#imgPreview').attr('src', result); //图片链接（base64）
+            });
+            var index = layer.load(); //开始上传之后打开load层
+            $("#hidden_tmp_index").val(index);//将load层的index隐藏到页面中
+        },
+        done: function(res, index, upload){ //假设code=0代表上传成功
+            layer.close(layer.index); //它获取的始终是最新弹出的某个层，值是由layer内部动态递增计算的
+            if(res.success == true){
+                //提示上传成功(关闭之后将按钮的内容变为更换图片)
+                layer.msg('上传成功', {icon: 1,time:2*1000});
+            }
+        }
+    });
+})
+</script>
