@@ -82,6 +82,7 @@ public class PictureController {
 			picture.setName(fileOriName);
 			picture.setPath(fileNowName);
 			picture.setViewid(viewId);
+			picture.setType("1");
 			pictureService.addPicture(picture);
 		} catch (Exception e) {
 			logger.error("uploadPicture error", e);
