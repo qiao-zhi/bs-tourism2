@@ -68,4 +68,9 @@ public class Index {
 	public String ticket_add() {
 		return "ticket-add";
 	}
+	
+	@RequestMapping("/food-list")
+	public String food_list() {
+		return "food-list";
+	}
 }
