@@ -3,28 +3,22 @@ package cn.qs.bean.user;
 import java.util.Date;
 
 public class Blogpicture {
-    private Integer id;
+    private String id;
 
     private String path;
 
-    private String name;
-
-    private Integer blogid;
-
-    private String type;
+    private String originname;
 
     private String blogpictureblank;
 
     private Date createtime;
 
-    private Date updatetime;
-
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public String getPath() {
@@ -35,28 +29,12 @@ public class Blogpicture {
         this.path = path == null ? null : path.trim();
     }
 
-    public String getName() {
-        return name;
+    public String getOriginname() {
+        return originname;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
-
-    public Integer getBlogid() {
-        return blogid;
-    }
-
-    public void setBlogid(Integer blogid) {
-        this.blogid = blogid;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type == null ? null : type.trim();
+    public void setOriginname(String originname) {
+        this.originname = originname == null ? null : originname.trim();
     }
 
     public String getBlogpictureblank() {
@@ -73,13 +51,5 @@ public class Blogpicture {
 
     public void setCreatetime(Date createtime) {
         this.createtime = createtime;
-    }
-
-    public Date getUpdatetime() {
-        return updatetime;
-    }
-
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
     }
 }

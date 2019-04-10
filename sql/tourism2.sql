@@ -26,26 +26,23 @@ CREATE TABLE `blog` (
   `blogtitle` varchar(255) DEFAULT NULL COMMENT '博客名称',
   `blogtype` varchar(255) DEFAULT NULL COMMENT '博客类型',
   `blogstatus` varchar(255) DEFAULT NULL COMMENT '状态(0失效，1有效)',
-  `userID` int(255) NOT NULL COMMENT '用户id（外键）',
+  `userID` int(255) DEFAULT NULL COMMENT '用户id（外键）',
   `blogblank` varchar(255) DEFAULT NULL COMMENT '保留字段',
   `createtime` datetime DEFAULT NULL,
   `updatetime` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `blogpicture` */
 
 DROP TABLE IF EXISTS `blogpicture`;
 
 CREATE TABLE `blogpicture` (
-  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `id` varchar(40) NOT NULL COMMENT 'UUID生成的主键',
   `path` varchar(255) DEFAULT NULL COMMENT '路径',
-  `name` varchar(255) DEFAULT NULL COMMENT '图片名称',
-  `blogID` int(11) NOT NULL COMMENT '博客id(外键)',
-  `type` varchar(255) DEFAULT NULL COMMENT '类型（1图片，2视频）',
+  `originname` varchar(255) DEFAULT NULL COMMENT '图片名称',
   `blogpictureblank` varchar(255) DEFAULT NULL COMMENT '保留字段',
   `createtime` datetime DEFAULT NULL,
-  `updatetime` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

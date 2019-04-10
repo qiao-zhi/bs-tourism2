@@ -7,27 +7,28 @@ import org.apache.ibatis.annotations.Param;
 
 import cn.qs.bean.user.Blogpicture;
 import cn.qs.bean.user.BlogpictureExample;
+
 @Mapper
 public interface BlogpictureMapper {
-    int countByExample(BlogpictureExample example);
+	int countByExample(BlogpictureExample example);
 
-    int deleteByExample(BlogpictureExample example);
+	int deleteByExample(BlogpictureExample example);
 
-    int deleteByPrimaryKey(Integer id);
+	int deleteByPrimaryKey(String id);
 
-    int insert(Blogpicture record);
+	int insert(Blogpicture record);
 
-    int insertSelective(Blogpicture record);
+	int insertSelective(Blogpicture record);
 
-    List<Blogpicture> selectByExample(BlogpictureExample example);
+	List<Blogpicture> selectByExample(BlogpictureExample example);
 
-    Blogpicture selectByPrimaryKey(Integer id);
+	Blogpicture selectByPrimaryKey(String id);
 
-    int updateByExampleSelective(@Param("record") Blogpicture record, @Param("example") BlogpictureExample example);
+	int updateByExampleSelective(@Param("record") Blogpicture record, @Param("example") BlogpictureExample example);
 
-    int updateByExample(@Param("record") Blogpicture record, @Param("example") BlogpictureExample example);
+	int updateByExample(@Param("record") Blogpicture record, @Param("example") BlogpictureExample example);
 
-    int updateByPrimaryKeySelective(Blogpicture record);
+	int updateByPrimaryKeySelective(Blogpicture record);
 
-    int updateByPrimaryKey(Blogpicture record);
+	int updateByPrimaryKey(Blogpicture record);
 }

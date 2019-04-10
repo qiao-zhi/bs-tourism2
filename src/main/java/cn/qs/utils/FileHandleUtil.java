@@ -21,7 +21,6 @@ public class FileHandleUtil {
 			ResourceBundle rb = ResourceBundle.getBundle(baseName, locale);
 			retValue = (String) rb.getObject(section);
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 		return retValue;
 	}
