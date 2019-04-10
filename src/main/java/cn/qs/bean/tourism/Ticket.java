@@ -22,8 +22,38 @@ public class Ticket {
     private Integer viewid;
 
     private String ticketblank;
+    
+    private String strStarttime;
+    
+    private String strEndtime; 
+    
+    private String viewname;
 
-    public Integer getId() {
+    public String getViewname() {
+		return viewname;
+	}
+
+	public void setViewname(String viewname) {
+		this.viewname = viewname;
+	}
+
+	public String getStrStarttime() {
+		return strStarttime;
+	}
+
+	public void setStrStarttime(String strStarttime) {
+		this.strStarttime = strStarttime;
+	}
+
+	public String getStrEndtime() {
+		return strEndtime;
+	}
+
+	public void setStrEndtime(String strEndtime) {
+		this.strEndtime = strEndtime;
+	}
+
+	public Integer getId() {
         return id;
     }
 

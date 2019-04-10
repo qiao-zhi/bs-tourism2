@@ -34,7 +34,7 @@ function showTicketsTable(pageInfo){
             +'<td>'+replaceNull(tickets[i].price)+'</td>'
             +'<td>'+replaceNull(tickets[i].starttime)+'</td>'
             +'<td>'+replaceNull(tickets[i].endtime)+'</td>'
-            +'<td>'+replaceNull(tickets[i].ticketNum)+'</td>'
+            +'<td>'+replaceNull(tickets[i].ticketnum)+'</td>'
             +'<td>'+replaceNull(tickets[i].createtime)+'</td>'
             +'<td>';
             if("undefined" != typeof admin){
