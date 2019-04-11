@@ -64,4 +64,9 @@ public class Index {
 	public String food_list() {
 		return "food-list";
 	}
+	
+	@RequestMapping("/food-add")
+	public String food_add() {
+		return "food-add";
+	}
 }

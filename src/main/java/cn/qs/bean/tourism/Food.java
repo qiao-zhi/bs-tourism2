@@ -16,8 +16,18 @@ public class Food {
     private Date createtime;
 
     private Date updatetime;
+    
+    private String viewname;
 
-    public Integer getId() {
+    public String getViewname() {
+		return viewname;
+	}
+
+	public void setViewname(String viewname) {
+		this.viewname = viewname;
+	}
+
+	public Integer getId() {
         return id;
     }
 

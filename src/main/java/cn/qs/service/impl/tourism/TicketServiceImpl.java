@@ -56,14 +56,6 @@ public class TicketServiceImpl implements TicketService {
 		return list;
 	}
 
-	/*@Override
-	public Ticket getTicket(int ticketname) {
-		TicketExample ticketExample = new TicketExample();
-		Criteria createCriteria = ticketExample.createCriteria();
-		createCriteria.andTicketnameEqualTo(ticketname);
-		List<Ticket> selectByExample = ticketMapper.selectByExample(ticketExample);
-		return selectByExample.get(0);
-	}*/
 	@Override
 	public Ticket getTicket(int id) {
 		return ticketMapper.selectByPrimaryKey(id);
