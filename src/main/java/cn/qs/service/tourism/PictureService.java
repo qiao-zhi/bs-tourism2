@@ -9,5 +9,7 @@ public interface PictureService {
 	void addPicture(Picture picture);
 
 	List<Picture> getPicturesByViewId(int viewId);
+	
+	List<Picture> getVideosByViewId(int viewId);
 
 }

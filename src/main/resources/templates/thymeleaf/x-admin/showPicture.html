@@ -29,6 +29,7 @@
 		<input type="hidden" id="hidden_tmp_index"/>
         <div class="layui-upload">
 	        <button type="button" class="layui-btn" id="structurePicture">上传图片</button>
+	        <button type="button" class="layui-btn" id="structureVideo">上传视频</button>
 	        <input type="hidden" th:field="${view.id}" id="viewId"/>
 	        <!--预留一个预览的img标签-->
 	        <div id="imgDiv" style="display: none;margin-top: 10px;">
@@ -55,6 +56,35 @@ layui.use(['upload','layer'],function () {
             obj.preview(function(index, file, result){
                 $('#imgPreview').attr('src', result); //图片链接（base64）
             });
+            var index = layer.load(); //开始上传之后打开load层
+            $("#hidden_tmp_index").val(index);//将load层的index隐藏到页面中
+        },
+        done: function(res, index, upload){ //假设code=0代表上传成功
+            layer.close(layer.index); //它获取的始终是最新弹出的某个层，值是由layer内部动态递增计算的
+            if(res.success == true){
+                //提示上传成功(关闭之后将按钮的内容变为更换图片)
+                layer.msg('上传成功', {icon: 1,time:2*1000});
+            }
+        }
+    });
+})
+</script>
+<script>
+layui.use(['upload','layer'],function () {
+    var upload = layui.upload,layer = layui.layer;
+    //普通图片上传
+    var uploadInst = upload.render({
+        elem: '#structureVideo',//绑定的元素
+        url: '/picture/uploadVideo.html',//提交的url
+        auto:true,//是否自动上传
+        accept:"video",//指定允许上传的文件类型
+        acceptMime:"video/*",
+        before: function(obj){
+            this.data={"viewId": $("#viewId").val()}//携带额外的数据
+            //预读本地文件示例，不支持ie8
+          /*   obj.preview(function(index, file, result){
+                $('#imgPreview').attr('src', result); //图片链接（base64）
+            }); */
             var index = layer.load(); //开始上传之后打开load层
             $("#hidden_tmp_index").val(index);//将load层的index隐藏到页面中
         },

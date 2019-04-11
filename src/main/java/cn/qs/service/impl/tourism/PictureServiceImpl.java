@@ -30,4 +30,13 @@ public class PictureServiceImpl implements PictureService {
 		return pictureMapper.selectByExample(example);
 	}
 
+	@Override
+	public List<Picture> getVideosByViewId(int viewId) {
+		PictureExample example = new PictureExample();
+		Criteria createCriteria = example.createCriteria();
+		createCriteria.andViewidEqualTo(viewId);
+		createCriteria.andTypeEqualTo("2");
+		return pictureMapper.selectByExample(example);
+	}
+
 }

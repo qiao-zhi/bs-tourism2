@@ -92,4 +92,31 @@ public class PictureController {
 		return JSONResultUtil.ok();
 	}
 
+	@RequestMapping("/uploadVideo")
+	@ResponseBody
+	public JSONResultUtil uploadVideo(MultipartFile file, Integer viewId) {
+		if (file == null) {
+			return JSONResultUtil.error("文件没接到");
+		}
+		logger.debug("Videofile -> {},viewId ->{}", file.getOriginalFilename(), viewId);
+
+		String fileOriName = file.getOriginalFilename();// 获取原名称
+		String fileNowName = UUIDUtil.getUUID2() + "." + FilenameUtils.getExtension(fileOriName);// 生成唯一的名字
+		try {
+			FileHandleUtil.uploadSpringMVCFile(file, fileNowName);
+
+			Picture picture = new Picture();
+			picture.setCreatetime(new Date());
+			picture.setName(fileOriName);
+			picture.setPath(fileNowName);
+			picture.setViewid(viewId);
+			picture.setType("2");
+			pictureService.addPicture(picture);
+		} catch (Exception e) {
+			logger.error("uploadPicture error", e);
+			return JSONResultUtil.error("添加景点视频出错");
+		}
+
+		return JSONResultUtil.ok();
+	}
 }

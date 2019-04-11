@@ -50,6 +50,15 @@
 		    </span>
 	    </div>
 	    
+	    <div th:unless="${#lists.isEmpty(videos)}">
+			<b>视频:<br/></b>
+		    <span th:each="video:${videos}">
+		    	&nbsp;&nbsp;
+		    	<!--  <img alt="" th:src="${#httpServletRequest.getContextPath()+'/static/x-admin/images/bg.png'}" height="280px" width="280px"/> -->
+		        <video th:src="/picture/getPicture.html?path='+picture.path" style="position: absolute;height: 280px;width: 280px;margin: -106px auto auto -60px;"/>
+		     </span>
+	    </div>
+	    
 	    <br/>
 	    <div th:unless="${#lists.isEmpty(commentsByViewId)}">
 			<b>评论:<br/></b>

@@ -130,6 +130,7 @@ public class ViewController {
 	public String queryViewDetails(int viewId, ModelMap map) {
 		View view = viewService.getView(viewId);
 		List<Picture> pictures = pictureService.getPicturesByViewId(viewId);
+		List<Picture> videos =  pictureService.getVideosByViewId(viewId);
 		List<Comment> commentsByViewId = commentService.getCommentsByViewId(viewId);
 		map.put("view", view);
 		if (CollectionUtils.isNotEmpty(pictures)) {
@@ -137,6 +138,9 @@ public class ViewController {
 		}
 		if (CollectionUtils.isNotEmpty(commentsByViewId)) {
 			map.put("commentsByViewId", commentsByViewId);
+		}
+		if (CollectionUtils.isNotEmpty(videos)) {
+			map.put("videos", videos);
 		}
 
 		return "viewDetails";
