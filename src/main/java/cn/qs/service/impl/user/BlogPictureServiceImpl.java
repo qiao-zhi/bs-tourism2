@@ -1,54 +1,27 @@
 package cn.qs.service.impl.user;
 
-import java.util.List;
-import java.util.Map;
-
-import org.apache.commons.collections.MapUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cn.qs.bean.user.Blog;
-import cn.qs.bean.user.BlogExample;
-import cn.qs.bean.user.BlogExample.Criteria;
-import cn.qs.mapper.user.BlogMapper;
-import cn.qs.service.user.BlogService;
+import cn.qs.bean.user.Blogpicture;
+import cn.qs.mapper.user.BlogpictureMapper;
+import cn.qs.service.user.BlogPictureService;
 
 @Service
-public class BlogPictureServiceImpl implements BlogService {
+public class BlogPictureServiceImpl implements BlogPictureService {
 
 	@Autowired
-	private BlogMapper blogMapper;
+	private BlogpictureMapper blogpictureMapper;
 
 	@Override
-	public int insert(Blog blog) {
-		return blogMapper.insert(blog);
+	public int insert(Blogpicture blogpicture) {
+		int insert = blogpictureMapper.insert(blogpicture);
+		return insert;
 	}
 
 	@Override
-	public List<Blog> getBlogs(Map condition) {
-		BlogExample blogExample = new BlogExample();
-		if (StringUtils.isNotBlank(MapUtils.getString(condition, "username"))) {
-			Criteria createCriteria = blogExample.createCriteria();
-			createCriteria.andBlogblankLike("%" + MapUtils.getString(condition, "username") + "%");
-		}
-		List<Blog> list = blogMapper.selectByExample(blogExample);
-		return list;
-	}
-
-	@Override
-	public Blog getBlogdetail(Integer blogId) {
-		return blogMapper.selectByPrimaryKey(blogId);
-	}
-
-	@Override
-	public void deleteBlog(int id) {
-		blogMapper.deleteByPrimaryKey(id);
-	}
-
-	@Override
-	public void updateBlog(Blog blog) {
-		blogMapper.updateByPrimaryKeySelective(blog);
+	public String getPicturePathByPictureId(String pictureId) {
+		return blogpictureMapper.selectByPrimaryKey(pictureId).getPath();
 	}
 
 }

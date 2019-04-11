@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="UTF-8"/>
+    <title th:text="${message.name}"></title>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/static/x-admin/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" th:href="${#httpServletRequest.getContextPath()+'/static/x-admin/css/font.css'}"/>
+    <link rel="stylesheet" th:href="${#httpServletRequest.getContextPath()+'/static/x-admin/css/xadmin.css'}"/>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" th:src="${#httpServletRequest.getContextPath()+'/static/x-admin/lib/layui/layui.all.js'}" charset="utf-8"></script>
+    <script type="text/javascript" th:src="${#httpServletRequest.getContextPath()+'/static/x-admin/js/xadmin.js'}"></script>
+    
+    <span th:if="${session.user.username} eq 'admin'">
+    	<script>
+    		var admin = true;
+    	</script>
+    </span>
+    <style type="text/css">
+    body{ 
+    text-align:center;
+    background-color: #dcdcdc;
+    }
+    #container{
+    	text-align:left;
+    	margin:0 auto;
+    	width: 80%;
+    	background-color: #fff;
+    }
+    </style>
+  </head>
+  
+  <body class="layui-anim layui-anim-up">
+	  <div id="container">
+	  	  <center>
+		  	<h1 th:text="${'标题:'+message.name}"></h1>
+		  </center>
+	  	  <hr/>
+	  	  <span th:utext="${message.content}"></span>
+	  </div>
+  </body>
+</html>

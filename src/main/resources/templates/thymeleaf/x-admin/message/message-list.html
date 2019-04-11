@@ -16,7 +16,7 @@
     
     <!--自己写的JS  -->
     <script type="text/javascript" th:src="${#httpServletRequest.getContextPath()+'/static/x-admin/MyJs/PublicFunctions.js'}"></script>
-    <script type="text/javascript" th:src="${#httpServletRequest.getContextPath()+'/static/x-admin/MyJs/blog_list.js'}"></script>
+    <script type="text/javascript" th:src="${#httpServletRequest.getContextPath()+'/static/x-admin/MyJs/message_list.js'}"></script>
     
     <span th:if="${session.user.username} eq 'admin'">
     	<script>
@@ -49,8 +49,7 @@
           <tr>
             <th>序号</th>
             <th>ID</th>
-            <th>标题</th>
-            <th>用户名</th>
+            <th>主题</th>
             <th>创建时间</th>
             <th>操作</th></tr>
         </thead>
