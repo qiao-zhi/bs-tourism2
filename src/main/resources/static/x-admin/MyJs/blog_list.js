@@ -117,6 +117,6 @@ function deleteUser(id){
 }
 
 function updateUser(id){
-	var url = 'user/updateUser.html?id='+id;
-	x_admin_show('修改用户',url,600,400);
+	var url = '/blog/updateBlog.html?id='+id;
+	x_admin_show('修改博客',url,1000,400);
 }

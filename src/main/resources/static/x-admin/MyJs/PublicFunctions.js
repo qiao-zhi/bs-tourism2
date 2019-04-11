@@ -20,3 +20,15 @@ function replaceNull(value,length) {
     return value.toString().substr(0,length);
 }
 
+/**
+ * 关闭当前页的函数
+ */
+function closeNowPage() {
+    var closeTable = $(".layui-tab-title", parent.document).children("li");
+    closeTable.each(function () {
+        if ($(this).attr("class") == "layui-this") {
+            $(this).children("i").trigger("click");//触发其点击事件(关闭当前tab)--trigger用于触发一个元素的指定事件
+        }
+    })
+}
+

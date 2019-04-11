@@ -19,8 +19,6 @@
    	<link rel="stylesheet" th:href="${#httpServletRequest.getContextPath()+'/static/kindeditor/plugins/code/prettify.css'}" />
 	<script charset="utf-8" th:src="${#httpServletRequest.getContextPath()+'/static/kindeditor/kindeditor-all.js'}"></script>
 	<script charset="utf-8" th:src="${#httpServletRequest.getContextPath()+'/static/kindeditor/lang/zh-CN.js'}"></script>
-	<!-- 公共的JS -->
-	<script charset="utf-8" th:src="${#httpServletRequest.getContextPath()+'/static/x-admin/MyJs/PublicFunctions.js'}"></script>
    	<script>
 	var editor;
 	KindEditor.ready(function(K) {
@@ -55,7 +53,7 @@
               </label>
               <div class="layui-input-inline">
                   <input type="text" id="L_blogtitle" name="blogtitle" lay-verify="required"
-                  autocomplete="off" class="layui-input"/>
+                  autocomplete="off" class="layui-input" th:value="${blog.blogtitle}"/>
               </div>
           </div>
           <div class="layui-form-item">
@@ -63,15 +61,16 @@
                   <span class="x-red">*</span>内容
               </label>
               <div class="layui-input-inline">
-                  <textarea name="contentEditor" id="test" cols="100" rows="8" style="width:700px;height:200px;visibility:hidden;"></textarea>
+                  <textarea name="contentEditor" th:text="${blog.content}" id="test" cols="100" rows="8" style="width:700px;height:200px;visibility:hidden;"></textarea>
               </div>
+              <input id="blogId" th:value="${blog.id}"/>
           </div>
      	  
           <div class="layui-form-item">
               <label for="L_repass" class="layui-form-label">
               </label>
               <button  class="layui-btn" lay-filter="add" lay-submit="">
-              	增加
+              	修改
               </button>
           </div>
       </form>
@@ -88,13 +87,19 @@
           form.on('submit(add)', function(data){
         	  var data = {
         			 "blogtitle":$('[name="blogtitle"]').val(),
-        			 "content":editor.html()
+        			 "content":editor.html(),
+        			 "id":$("#blogId").val()
         	  }
        	    //异步提交数据
-         	    $.post("/blog/doAddBlog.html",data,function(response){
+         	    $.post("/blog/doUpdateBlog.html",data,function(response){
        	    	if(response.success == true){
-       	    	  layer.msg("增加成功", {icon: 6},function () {
-       	    		closeNowPage();
+       	    	  layer.msg("修改成功", {icon: 6},function () {
+                      // 获得frame索引
+                      var index = parent.layer.getFrameIndex(window.name);
+                      //关闭当前frame
+                      parent.layer.close(index);
+                      // 父页面刷新
+                      parent.location.reload();
                   });
        	    	}else{
        	    		layer.alert(response.msg);

@@ -46,4 +46,9 @@ public class BlogPictureServiceImpl implements BlogService {
 		blogMapper.deleteByPrimaryKey(id);
 	}
 
+	@Override
+	public void updateBlog(Blog blog) {
+		blogMapper.updateByPrimaryKeySelective(blog);
+	}
+
 }

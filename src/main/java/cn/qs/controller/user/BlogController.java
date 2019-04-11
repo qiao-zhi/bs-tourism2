@@ -118,4 +118,18 @@ public class BlogController {
 		return JSONResultUtil.ok();
 	}
 
+	@RequestMapping("updateBlog")
+	public String updateBlog(Integer id, ModelMap map, HttpServletRequest request) {
+		Blog blog = blogService.getBlogdetail(id);
+		map.addAttribute("blog", blog);
+		return "updateBlog";
+	}
+
+	@RequestMapping("doUpdateBlog")
+	@ResponseBody
+	public JSONResultUtil doUpdateBlog(Blog blog) {
+		logger.info("user -> {}", blog);
+		blogService.updateBlog(blog);
+		return JSONResultUtil.ok();
+	}
 }
