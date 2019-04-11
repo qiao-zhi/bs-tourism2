@@ -38,10 +38,10 @@ function showUsersTable(pageInfo){
             +'<td>'+replaceNull(users[i].createtime)+'</td>'
             +'<td>';
         if("undefined" != typeof admin){
-            tr+='<a href=javascript:void(0) title="点击修改景点" onclick="updateUser('+users[i].id+')"><i class="layui-icon">&#xe642;</i></a>'
-            +'<a href=javascript:void(0) title="点击删除该景点" onclick="deleteUser('+users[i].id+')"><i class="layui-icon">&#xe640;</i></a>'
-            +'<a href=javascript:void(0) title="点击上传景点图片" onclick="showPicture('+users[i].id+')"><i class="layui-icon">&#xe681;</i></a>'
-            +'<a href=javascript:void(0) title="点击查看详情" onclick="queryViewDetails('+users[i].id+')"><i class="layui-icon">&#xe615;</i></a>'
+            tr+='<a href=javascript:void(0) title="修改" onclick="updateUser('+users[i].id+')"><i class="layui-icon">&#xe642;</i></a>'
+            +'<a href=javascript:void(0) title="删除" onclick="deleteUser('+users[i].id+')"><i class="layui-icon">&#xe640;</i></a>'
+            +'<a href=javascript:void(0) title="上传景点图片" onclick="showPicture('+users[i].id+')"><i class="layui-icon">&#xe681;</i></a>'
+            +'<a href=javascript:void(0) title="查看详情" onclick="queryViewDetails('+users[i].id+')"><i class="layui-icon">&#xe615;</i></a>'
             }else{
             	tr+='-- --'
             }

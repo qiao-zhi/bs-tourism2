@@ -35,11 +35,11 @@ function showUsersTable(pageInfo){
             +'<td>'+replaceNull(users[i].createtime)+'</td>'
             +'<td>';
 	        if("undefined" != typeof admin){
-	        	tr+='<a href=javascript:void(0) title="点击修改博客" onclick="updateUser('+users[i].id+')"><i class="layui-icon">&#xe642;</i></a>'
-	        		+'<a href=javascript:void(0) title="点击删除该博客" onclick="deleteUser('+users[i].id+')"><i class="layui-icon">&#xe640;</i></a>'
+	        	tr+='<a href=javascript:void(0) title="修改" onclick="updateUser('+users[i].id+')"><i class="layui-icon">&#xe642;</i></a>'
+	        		+'<a href=javascript:void(0) title="删除" onclick="deleteUser('+users[i].id+')"><i class="layui-icon">&#xe640;</i></a>'
 	        }
             
-	        tr+='<a href="/blog/getBlogdetail/'+users[i].id+'" target="_blank" title="点击查看详情用户"><i class="layui-icon">&#xe615;</i></a>';
+	        tr+='<a href="/blog/getBlogdetail/'+users[i].id+'" target="_blank" title="查看详情"><i class="layui-icon">&#xe615;</i></a>';
         	tr +='</td></tr>'
         $("#memberTbody").append(tr);
     }
