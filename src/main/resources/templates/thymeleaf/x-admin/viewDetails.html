@@ -54,8 +54,7 @@
 			<b>视频:<br/></b>
 		    <span th:each="video:${videos}">
 		    	&nbsp;&nbsp;
-		    	<!--  <img alt="" th:src="${#httpServletRequest.getContextPath()+'/static/x-admin/images/bg.png'}" height="280px" width="280px"/> -->
-		        <video th:src="/picture/getPicture.html?path='+picture.path" style="position: absolute;height: 280px;width: 280px;margin: -106px auto auto -60px;"/>
+		       <video th:src="${'/picture/getPicture.html?path='+video.path}" style="height: 280px;width: 280px;" controls="true"/>
 		     </span>
 	    </div>
 	    
