@@ -17,7 +17,7 @@
     
     <!--自己写的JS  -->
     <script type="text/javascript" th:src="${#httpServletRequest.getContextPath()+'/static/x-admin/MyJs/index.js'}"></script>
-    <span th:if="${session.user.username} eq 'admin'">
+    <span th:if="${session.user.roles} eq '1'">
     	<script>
     		var admin = true;
     	</script>
@@ -50,7 +50,7 @@
     <div class="left-nav">
       <div id="side-nav">
         <ul id="nav">
-            <li>
+            <li th:if="${session.user.roles} eq '1'">
                 <a href="javascript:;">
                     <i class="iconfont">&#xe6b8;</i>
                     <cite>用户管理</cite>

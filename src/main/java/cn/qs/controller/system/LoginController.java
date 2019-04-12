@@ -48,6 +48,7 @@ public class LoginController {
 			loginUser = new User();
 			loginUser.setFullname("系统管理员");
 			loginUser.setUsername("admin");
+			loginUser.setRoles("1");
 		} else {
 			loginUser = userService.getUserByUserNameAndPassword(username, password);
 		}

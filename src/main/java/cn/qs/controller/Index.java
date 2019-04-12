@@ -46,25 +46,31 @@ public class Index {
 	}
 
 	@RequestMapping("/user-add")
-	public String member_add() {
+	public String member_add(String from,ModelMap map) {
+		if("register".equals(from)){
+			map.put("userType", "2");
+		}else{
+			map.put("userType", "1");
+		}
+		
 		return "user-add";
 	}
-	
+
 	@RequestMapping("/ticket-list")
 	public String ticket_list() {
 		return "ticket-list";
 	}
-	
+
 	@RequestMapping("/ticket-add")
 	public String ticket_add() {
 		return "ticket-add";
 	}
-	
+
 	@RequestMapping("/food-list")
 	public String food_list() {
 		return "food-list";
 	}
-	
+
 	@RequestMapping("/food-add")
 	public String food_add() {
 		return "food-add";

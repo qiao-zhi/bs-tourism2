@@ -17,12 +17,9 @@
     <!--自己写的JS  -->
     <script type="text/javascript" th:src="${#httpServletRequest.getContextPath()+'/static/x-admin/MyJs/PublicFunctions.js'}"></script>
     <script type="text/javascript" th:src="${#httpServletRequest.getContextPath()+'/static/x-admin/MyJs/blog_list.js'}"></script>
-    
-    <span th:if="${session.user.username} eq 'admin'">
-    	<script>
-    		var admin = true;
-    	</script>
-    </span>
+   	<script>
+   		var admin = true;
+   	</script>
   </head>
   
   <body class="layui-anim layui-anim-up">
