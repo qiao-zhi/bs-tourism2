@@ -82,15 +82,14 @@ public class MessageController {
 		} catch (Exception e) {
 			logger.error("getmessages error！", e);
 		}
+		
 		PageInfo<Message> pageInfo = new PageInfo<Message>(messages);
-
 		return pageInfo;
 	}
 
 	@RequestMapping("/getMessagedetail/{messageId}")
 	public String getMessagedetail(ModelMap map, @PathVariable() Integer messageId, HttpServletRequest request) {
 		Message message = messageService.getMessageDetail(messageId);
-		// 获取当前用户
 		map.put("message", message);
 
 		return "message/messageDetail";
